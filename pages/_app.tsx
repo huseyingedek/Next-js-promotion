@@ -1,6 +1,15 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import { AppProps } from 'next/app';
+import { Layout } from "@/src/Core/index";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <div className="w-full h-full ">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </div>
+  )
 }
+
+export default App;
