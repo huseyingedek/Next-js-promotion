@@ -1,106 +1,88 @@
-import React from "react";
-import {
-  FacebookOutlined,
-  TwitterOutlined,
-  GithubOutlined,
-  InstagramOutlined,
-} from "@ant-design/icons";
+import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-<footer className="bg-white dark:bg-gray-900">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
-              <img src="/img/asdd.png" className="h-14 w-36 me-3" alt="FlowBite Logo" />
-              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Ticaret</span> */}
-            </a>
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Kaynaklar
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">
-                    Flowbite
-                  </a>
-                </li>
-                <li>
-                  <a href="https://tailwindcss.com/" className="hover:underline">
-                    Tailwind CSS
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                BİZİ TAKİP EDİN
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    className="hover:underline"
-                  >
-                    Github
-                  </a>
-                </li>
-                <li>
-                  <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">
-                    Discord
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Yasal
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Terms &amp; Conditions
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <footer className="font-sans tracking-wide bg-[#213343] py-10 px-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h4 className="text-[#FFA726] font-semibold text-lg mb-6">Hızlı Bağlantılar</h4>
+          <ul className="space-y-5">
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Our Story</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Newsroom</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Careers</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Blog</a>
+            </li>
+          </ul>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2023 <a href="" className="hover:underline">Flowbite™</a>. All Rights Reserved.
-          </span>
-          <div className="flex mt-4 sm:justify-center sm:mt-0">
-            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-              <FacebookOutlined className="w-4 h-4" />
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-              <InstagramOutlined className="w-4 h-4" />
-              <span className="sr-only">Discord community</span>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-              <TwitterOutlined className="w-4 h-4" />
-              <span className="sr-only">Twitter page</span>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-              <GithubOutlined className="w-4 h-4" />
-              <span className="sr-only">GitHub account</span>
-            </a>
-          </div>
+
+        <div>
+          <h4 className="text-[#FFA726] font-semibold text-lg mb-6">Servisler</h4>
+          <ul className="space-y-5">
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Web Development</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Testing Automation</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">AWS Development Services</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Mobile App Development</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-[#FFA726] font-semibold text-lg mb-6">Platformlar</h4>
+          <ul className="space-y-5">
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Hubspot</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Marketo Integration Services</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Marketing Glossary</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">UIPath</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-[#FFA726] font-semibold text-lg mb-6">Şirket</h4>
+          <ul className="space-y-5">
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Accessibility</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">About</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Contact</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" className="hover:text-[#FFA726] text-gray-300 text-[15px] transition-all">Learn more</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>
 
+      <div className="border-t text-center border-[#6b5f5f] pt-8 mt-8">
+        <p className="text-gray-300 text-[15px]">
+          © ReadymadeUI. All rights reserved.
+        </p>
+      </div>
+    </footer>
   );
 };
 

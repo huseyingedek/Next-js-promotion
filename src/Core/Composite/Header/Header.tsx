@@ -1,102 +1,96 @@
-import Image from "next/image";
-import { useState } from "react";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
-import { LanguageDropdown } from "@/src/Core/index";
+import React, { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { MenuOutlined, CloseOutlined, DownOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Modal } from 'antd';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("tr");
-  const [activeMenuItem, setActiveMenuItem] = useState("Anasayfa");
+  const router = useRouter();
+  const collapseMenuRef = useRef<HTMLDivElement | null>(null);
+  const [isSearchModalVisible, setIsSearchModalVisible] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleClick = () => {
+    if (collapseMenuRef.current) {
+      collapseMenuRef.current.style.display =
+        collapseMenuRef.current.style.display === 'block' ? 'none' : 'block';
+    }
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const showSearchModal = () => {
+    setIsSearchModalVisible(true);
   };
 
-  const handleChangeLanguage = (code: string) => {
-    setSelectedLanguage(code);
-    setIsDropdownOpen(false);
+  const handleSearchModalClose = () => {
+    setIsSearchModalVisible(false);
   };
 
-  const handleMenuItemClick = (menuItem: string) => {
-    setActiveMenuItem(menuItem);
-  };
+  useEffect(() => {
+    document.body.style.paddingTop = '70px';
+    return () => {
+      document.body.style.paddingTop = '0';
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 transition-top duration-300">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="" className="flex items-center">
-            <Image
-              src="/img/asdd.png"
-              alt="Flowbite Logo"
-              width={130}
-              height={36}
-              className="mr-3 h-14 sm:h-16"
-            />
-          </a>
-          <div className="flex items-center lg:order-2">
-            <div className="hidden lg:block">
-              <LanguageDropdown
-                isOpen={isDropdownOpen}
-                toggleDropdown={toggleDropdown}
-                selectedLanguage={selectedLanguage}
-                handleChangeLanguage={handleChangeLanguage}
-              />
-            </div>
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="mobile-menu-2"
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isMenuOpen ? (
-                <MenuOutlined className="w-6 h-6" />
-              ) : (
-                <CloseOutlined className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+    <header className='fixed top-0 left-0 right-0 flex border-b bg-white font-sans min-h-[70px] tracking-wide z-50'>
+      <div className='flex flex-wrap items-center justify-between px-4 py-3 gap-4 w-full lg:px-10'>
+        <a href="javascript:void(0)">
+          <img src="https://readymadeui.com/readymadeui.svg" alt="logo" className='w-24 lg:w-36' />
+        </a>
+
+        <div className='flex-grow flex justify-center'>
           <div
-            className={`${
-              isMenuOpen ? "block" : "hidden"
-            } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
-            id="mobile-menu-2"
+            ref={collapseMenuRef}
+            className='hidden lg:block lg:!block max-lg:fixed max-lg:bg-white max-lg:w-full max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'
+            style={{ display: 'none' }}
           >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              {["Anasayfa", "Hizmetlerimiz", "Hakkımızda", "Ürünlerimiz", "Takım", "İletişim"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    onClick={() => handleMenuItemClick(item)}
-                    className={`block py-2 pr-4 pl-3 rounded lg:p-0 ${
-                      activeMenuItem === item
-                        ? "text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 dark:text-white"
-                        : "text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                    }`}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-              <li className="block lg:hidden mt-4 lg:mt-0 lg:ml-auto ml-auto">
-                <LanguageDropdown
-                  isOpen={isDropdownOpen}
-                  toggleDropdown={toggleDropdown}
-                  selectedLanguage={selectedLanguage}
-                  handleChangeLanguage={handleChangeLanguage}
-                />
+            <Button onClick={handleClick} className='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
+              <CloseOutlined />
+            </Button>
+
+            <ul className='lg:flex lg:gap-x-10 max-lg:space-y-3'>
+              <li className='max-lg:border-b max-lg:py-3'>
+                <a href='/' className={`hover:text-[#FFA726] text-[15px] font-bold block ${router.pathname === '/' ? 'text-[#FFA726]' : 'text-gray-600'}`}>Anasayfa</a>
+              </li>
+              <li className='max-lg:border-b max-lg:py-3'>
+                <a href='/services' className={`hover:text-[#FFA726] text-[15px] font-bold block ${router.pathname === '/services' ? 'text-[#FFA726]' : 'text-gray-600'}`}>Hizmetlerimiz</a>
+              </li>
+              <li className='group max-lg:border-b max-lg:py-3 relative'>
+                <a href='#' className='flex items-center hover:text-[#FFA726] text-gray-600 text-[15px] font-bold block cursor-pointer'>
+                  Ürünlerimiz <DownOutlined style={{ fontSize: '14px', marginLeft: '5px' }} />
+                </a>
+                <ul className='absolute shadow-lg bg-white space-y-3 lg:top-5 max-lg:top-8 -left-6 min-w-[150px] z-50 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
+                  <li className='border-b py-2 '><a href='/products' className='hover:text-[#FFA726] text-gray-600 text-[15px] font-bold block'>Product 1</a></li>
+                  <li className='border-b py-2 '><a href='/products' className='hover:text-[#FFA726] text-gray-600 text-[15px] font-bold block'>Product 2</a></li>
+                  <li className='border-b py-2 '><a href='/products' className='hover:text-[#FFA726] text-gray-600 text-[15px] font-bold block'>Product 3</a></li>
+                </ul>
+              </li>
+              <li className='max-lg:border-b max-lg:py-3'>
+                <a href='/about' className={`hover:text-[#FFA726] text-[15px] font-bold block ${router.pathname === '/about' ? 'text-[#FFA726]' : 'text-gray-600'}`}>Hakkımızda</a>
+              </li>
+              <li className='max-lg:border-b max-lg:py-3'>
+              <a href='/contact' className={`hover:text-[#FFA726] text-[15px] font-bold block ${router.pathname === '/contact' ? 'text-[#FFA726]' : 'text-gray-600'}`}>İletişim</a>
               </li>
             </ul>
           </div>
         </div>
-      </nav>
+
+        <Button id="toggleOpen" className='lg:hidden' onClick={handleClick}>
+          <MenuOutlined style={{ fontSize: '24px', color: '#000' }} />
+        </Button>
+
+        <div className='flex border-2 focus-within:border-gray-400 rounded-full px-4 py-2 overflow-hidden max-w-full lg:max-w-52'>
+          <input type='text' placeholder='Bir şey ara...' className='w-full text-sm bg-transparent outline-none pr-2' />
+          <SearchOutlined style={{ fontSize: '16px', color: '#000', cursor: 'pointer' }} onClick={showSearchModal} />
+        </div>
+      </div>
+      <Modal
+        title="Arama"
+        visible={isSearchModalVisible}
+        onCancel={handleSearchModalClose}
+        footer={null}
+      >
+        <input type='text' placeholder='Bir şey ara...' className='w-full text-sm bg-transparent outline-none pr-2' />
+      </Modal>
     </header>
   );
 };
